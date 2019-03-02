@@ -4,7 +4,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include<iostream>
-#include"BFS.h"
+//#include"BFS.h"
 #define UP 1
 #define DOWN 2
 #define LEFT 3
@@ -14,49 +14,49 @@ using namespace std;
 
 class Snake;
 
-class Map //µØÍ¼ĞÅÏ¢»æÖÆ
+class Map //åœ°å›¾ä¿¡æ¯ç»˜åˆ¶
 {
 public:
 	
-	void Init_map();//µØÍ¼³õÊ¼»¯
-	void draw_map(int _x=3,int _y=3);//µØÍ¼»æÖÆ
-	bool is_gameover();//½áÊøÌáÊ¾
+	void Init_map();//åœ°å›¾åˆå§‹åŒ–
+	void draw_map(int _x=3,int _y=3);//åœ°å›¾ç»˜åˆ¶
+	bool is_gameover();//ç»“æŸæç¤º
 	
 };
-class Food//Ê³Îï
+class Food//é£Ÿç‰©
 {
 private:
 	COORD _food;
 public:
-	void rand_food(deque<COORD> & coord);//Ëæ»úÊ³Îï
-	COORD GetFoodCoordinate()//·µ»ØÊ³Îï×ø±ê
+	void rand_food(deque<COORD> & coord);//éšæœºé£Ÿç‰©
+	COORD GetFoodCoordinate()//è¿”å›é£Ÿç‰©åæ ‡
 	{
 		return _food;
 	}
 };
-class Snake //ÉßµÄÖ÷ÌåºÍÒÆ¶¯
+class Snake //è›‡çš„ä¸»ä½“å’Œç§»åŠ¨
 {
 private:
-	COORD head;//Í·
-	int dir;//·½Ïò
+	COORD head;//å¤´
+	int dir;//æ–¹å‘
 	int cmps = 4;
 	
-	BFS AISnake;
+	/*BFS AISnake;
 	int direction[4][2] = { { 0,1 },{ 0,-1 },{ 1,0 },{ -1,0 } };
-	bool map[21][21];
+	bool map[21][21];*/
 public:
 	int speed = 500;
-	bool gamemode;//ÓÎÏ·Ä£Ê½
-	deque<COORD> body;//Ë«¶Ë¶ÓÁĞĞÍ
+	bool gamemode;//æ¸¸æˆæ¨¡å¼
+	deque<COORD> body;//åŒç«¯é˜Ÿåˆ—å‹
 
-	bool eat_food(Food &f);//½øÊ³
-	void dis_score(int &speed);//´òÓ¡ËÙ¶È³¤¶È
-	void move_snake(deque<COORD> &_snake, Food &food);//ÒÆ¶¯µÄº¯Êı
-	void hit_kb();//½ÓÊÜ¼üÅÌ
-	bool alive(COORD s);//¼ì²âËÀÍö
-	void init_sanke(int x = 12, int y = 12);
+	bool eat_food(Food &f);//è¿›é£Ÿ
+	void dis_score(int &speed);//æ‰“å°é€Ÿåº¦é•¿åº¦
+	void move_snake(deque<COORD> &_snake, Food &food);//ç§»åŠ¨çš„å‡½æ•°
+	void hit_kb();//æ¥å—é”®ç›˜
+	bool alive(COORD s);//æ£€æµ‹æ­»äº¡
+	void init_sanke(int x = 13, int y = 12);
 	void game_mode();
-	void AI_find_path(Food &f);
-	COORD tran_c(COORD pre_c);//×ø±ê×ª»»
-	COORD retran_c(COORD _c);
+	/*void AI_find_path(Food &f);
+	COORD tran_c(COORD pre_c);//åæ ‡è½¬æ¢
+	COORD retran_c(COORD _c);*/
 };
