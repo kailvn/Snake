@@ -1,8 +1,8 @@
 #include"Snake.h"
 using namespace std;
-HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);//»ñÈ¡Êä³ö¾ä±ú
+HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);//è·å–è¾“å‡ºå¥æŸ„
 
-void gotocoord(int x, int y)//µ½×ø±êÎ»ÖÃ
+void gotocoord(int x, int y)//åˆ°åæ ‡ä½ç½®
 {
 	COORD c;
 	c.X = x; c.Y = y;
@@ -15,65 +15,65 @@ void gotocoord(COORD c)
 
 void Map::Init_map()
 {
-	SetConsoleTitleA("ÎÒµÄÌ°³ÔÉß");//±êÌâ
+	SetConsoleTitleA("æˆ‘çš„è´ªåƒè›‡");//æ ‡é¢˜
 	COORD dSiz = { 80, 25 };
-	SetConsoleScreenBufferSize(handle, dSiz);//ÉèÖÃ´°¿Ú»º³åÇø´óĞ¡
-	CONSOLE_CURSOR_INFO ptr = { 1, FALSE };//ÉèÖÃ¹â±ê´óĞ¡£¬Òş²Ø¹â±ê
+	SetConsoleScreenBufferSize(handle, dSiz);//è®¾ç½®çª—å£ç¼“å†²åŒºå¤§å°
+	CONSOLE_CURSOR_INFO ptr = { 1, FALSE };//è®¾ç½®å…‰æ ‡å¤§å°ï¼Œéšè—å…‰æ ‡
 	SetConsoleCursorInfo(handle, &ptr);
-	//system("color 0f");//ÉèÖÃ»­²¼ÑÕÉ«
+	//system("color 0f");//è®¾ç½®ç”»å¸ƒé¢œè‰²
 	srand((unsigned int)time(0));
 
 }
 void Map::draw_map(int _x,int _y)
 {
-	SetConsoleTextAttribute(handle, 0x0f);//ÉèÖÃÎÄ±¾ÑÕÉ«
-	system("cls");//ÇåÆÁ
-	//×ó±ß¿ò
+	SetConsoleTextAttribute(handle, 0x0f);//è®¾ç½®æ–‡æœ¬é¢œè‰²
+	system("cls");//æ¸…å±
+	//å·¦è¾¹æ¡†
 	for (int i = 0; i < 23; i++)
 	{
-		cout << endl << " ¡ñ";
+		cout << endl << " â—";
 	}
-	//ÉÏ±ß¿ò
+	//ä¸Šè¾¹æ¡†
 	gotocoord(3, 1);
 	for (int i = 0; i < 21; i++)
 	{
-		cout << "¡ñ";
+		cout << "â—";
 	}
-	//ÏÂ±ß¿ò
+	//ä¸‹è¾¹æ¡†
 	gotocoord(3, 23);
 	for (int i = 0; i < 21; i++)
 	{
-		cout << "¡ñ";
+		cout << "â—";
 	}
-	//ÓÒ±ß¿ò
+	//å³è¾¹æ¡†
 	for (SHORT i = 1; i <= 23; i++)
 	{
 		gotocoord(45, i);
-		cout << "¡ñ";
+		cout << "â—";
 	}
-	SetConsoleTextAttribute(handle, 0x0a);//ÉèÖÃÎÄ±¾ÑÕÉ«
+	SetConsoleTextAttribute(handle, 0x0a);//è®¾ç½®æ–‡æœ¬é¢œè‰²
 	gotocoord(_x + 47, _y + 0);
-	cout << "¡öÓÎÏ·ËµÃ÷£º";
+	cout << "â– æ¸¸æˆè¯´æ˜ï¼š";
 	gotocoord(_x + 51, _y + 2);
-	cout << "×Ô¶¯¼ÓËÙ";
+	cout << "è‡ªåŠ¨åŠ é€Ÿ";
 	gotocoord(_x + 51, _y + 3);
-	cout << "¶ÏÎ²ÇóÉú£º0";
+	cout << "æ–­å°¾æ±‚ç”Ÿï¼š0";
 	gotocoord(_x + 47, _y + 5);
-	cout << "¡ö²Ù×÷ËµÃ÷£º";
+	cout << "â– æ“ä½œè¯´æ˜ï¼š";
 	gotocoord(_x + 51, _y + 7);
-	cout << "Ïò×óÒÆ¶¯£º¡û A";
+	cout << "å‘å·¦ç§»åŠ¨ï¼šâ† A";
 	gotocoord(_x + 51, _y + 8);
-	cout << "ÏòÓÒÒÆ¶¯£º¡ú D";
+	cout << "å‘å³ç§»åŠ¨ï¼šâ†’ D";
 	gotocoord(_x + 51, _y + 9);
-	cout << "ÏòÏÂÒÆ¶¯£º¡ı S";
+	cout << "å‘ä¸‹ç§»åŠ¨ï¼šâ†“ S";
 	gotocoord(_x + 51, _y + 10);
-	cout << "ÏòÉÏÒÆ¶¯£º¡ü W";
+	cout << "å‘ä¸Šç§»åŠ¨ï¼šâ†‘ W";
 	gotocoord(_x + 51, _y + 11);
-	cout << "¿ØÖÆ¼ÓËÙ£º+";
+	cout << "æ§åˆ¶åŠ é€Ÿï¼š+";
 	gotocoord(_x + 51, _y + 12);
-	cout << "ÔİÍ£ÓÎÏ·£º¿Õ¸ñ";
+	cout << "æš‚åœæ¸¸æˆï¼šç©ºæ ¼";
 	gotocoord(_x + 51, _y + 13);
-	cout << "¼ÌĞøÓÎÏ·£ºÈÎÒâ¼ü";
+	cout << "ç»§ç»­æ¸¸æˆï¼šä»»æ„é”®";
 	gotocoord(_x + 47, 22);
 	cout << "By:     kailvn";
 	gotocoord(_x + 53, 23);
@@ -88,7 +88,7 @@ void Snake::game_mode()
 	gotocoord(56, 23);
 	cout << "version 3.0";
 	gotocoord(23, 12);
-	cout << "Ñ¡ÔñÓÎÏ·Ä£Ê½";
+	cout << "é€‰æ‹©æ¸¸æˆæ¨¡å¼";
 	gotocoord(23, 13);
 	cout << "1.easy      ";
 	gotocoord(23, 14) ;
@@ -129,13 +129,13 @@ bool Map::is_gameover()
 {
 	gotocoord(17, 11);
 	SetConsoleTextAttribute(handle, 0x0f);
-	cout << "ÄúÕâË®Æ½...";
+	cout << "æ‚¨è¿™æ°´å¹³...";
 	gotocoord(17, 12);
-	cout << "½¨ÒéÄú»¹ÊÇÈ¥Ñ§Ï°°É!";
+	cout << "å»ºè®®æ‚¨è¿˜æ˜¯å»å­¦ä¹ å§!";
 	SetConsoleTextAttribute(handle, 0x0f);
 	gotocoord(18, 8);
 	SetConsoleTextAttribute(handle, 0x0a);
-	cout << "Y Ñ§Ï°ÖØÒª/N ĞÅÄã¸ö¹í !";
+	cout << "Y å­¦ä¹ é‡è¦/N ä¿¡ä½ ä¸ªé¬¼ !";
 	char ch = _getch();
 	if (ch == 'Y' || ch == 'y')return false;
 	return true;
@@ -144,10 +144,10 @@ void Snake::dis_score(int &speed)
 {
 	int _x = 3, _y = 5;
 	gotocoord(_x + 47, _y + 13);
-	cout << "¡ô ÒÆ¶¯ËÙ¶È£º ";
+	cout << "â—† ç§»åŠ¨é€Ÿåº¦ï¼š ";
 	cout << 100 - speed / 10 + 1;
 	gotocoord(_x + 47, _y + 14);
-	cout << "¡ô µ±Ç°³¤¶È£º ";
+	cout << "â—† å½“å‰é•¿åº¦ï¼š ";
 	cout << body.size();
 	if (speed > 50)
 		if (body.size() > cmps)
@@ -171,13 +171,13 @@ void Snake::hit_kb()
 
 	if (_kbhit())
 	{
-		ch = _getch();	//Ê¹ÓÃ getch º¯Êı»ñÈ¡¼üÅÌÊäÈë 
+		ch = _getch();	//ä½¿ç”¨ getch å‡½æ•°è·å–é”®ç›˜è¾“å…¥ 
 		switch (ch)
 		{
 		case 'w':
 		case 'W':
 		case '8':
-			if (this->dir == DOWN)//thisÖ¸Õë¸Ä±äÉßÀàÖĞdir
+			if (this->dir == DOWN)//thisæŒ‡é’ˆæ”¹å˜è›‡ç±»ä¸­dir
 				break;
 			this->dir = UP;
 			break;
@@ -231,12 +231,12 @@ void Snake::hit_kb()
 }
 bool Snake::alive(COORD s)
 {
-	//±ß½ç
+	//è¾¹ç•Œ
 	if (s.Y < 2 || (s.Y >22) || (s.X <3) || s.X >43)
 	{
 		return true;
 	}
-	//×ÔÉ±
+	//è‡ªæ€
 	for (unsigned int i = 0; i < body.size() - 1; i++)
 	{
 		if (body.back().X == body.at(i).X && body.back().Y == body.at(i).Y)
@@ -249,7 +249,7 @@ bool Snake::alive(COORD s)
 }
 void Snake::move_snake(deque<COORD> &_snake, Food &food)
 {   
-	hit_kb();//½ÓÊÕ°´¼ü
+	hit_kb();//æ¥æ”¶æŒ‰é”®
 
 	head = body.back();
 
@@ -275,19 +275,19 @@ void Snake::move_snake(deque<COORD> &_snake, Food &food)
 	SetConsoleTextAttribute(handle, 0x0B);
 	_snake.push_back(head);
 	
-	if (eat_food(food))//ÓĞ¹ØÉßµÄÔö³¤
+	if (eat_food(food))//æœ‰å…³è›‡çš„å¢é•¿
 	{
 		food.rand_food(body);
 	}
 	else
 	{
 		gotocoord(body.front());
-		body.pop_front();//È¥Î²°Í
+		body.pop_front();//å»å°¾å·´
 		cout << ' ';
 	}
 	SetConsoleTextAttribute(handle, 0xB);
 	gotocoord(body.back());
-	cout << "¡ö";
+	cout << "â– ";
 
 	SetConsoleTextAttribute(handle, 0xB);
 	dis_score(speed);
@@ -304,7 +304,7 @@ void Snake::init_sanke(int x, int y)
 	{
 		gotocoord(body[i].X, body[i].Y);
 		SetConsoleTextAttribute(handle, 0x0B);
-		cout << "¡ö";
+		cout << "â– ";
 	}
 }
 void Food::rand_food(deque<COORD> & coord)
@@ -312,7 +312,7 @@ void Food::rand_food(deque<COORD> & coord)
 	_food.X = 2 * rand() % (20) + 3;
 	_food.Y = rand() % (20) + 2;
 	unsigned int i;
-	//Ê³Îï³öÏÖÔÚÉßµÄÎ»ÖÃÉÏ,ÖØĞÂÉú³É
+	//é£Ÿç‰©å‡ºç°åœ¨è›‡çš„ä½ç½®ä¸Š,é‡æ–°ç”Ÿæˆ
 	for (i = 0; i < coord.size(); i++)
 	{
 
@@ -325,84 +325,5 @@ void Food::rand_food(deque<COORD> & coord)
 	}
 	gotocoord(_food.X, _food.Y);
 	SetConsoleTextAttribute(handle, 0x0e);
-	cout << "¡ö";
-}
-void Snake::AI_find_path(Food &f)
-{
-	static int not_found = 1;
-	static int cot = 0;
-	COORD head, temp;
-	COORD fpoint = f.GetFoodCoordinate();
-
-	for (unsigned int i = 0; i < body.size(); i++)
-	{
-		map[(body[i].X-3)/2][body[i].Y-2] = true; //ÉßµÄÉíÌåÒ²ÊÇÕÏ°­
-	}
-	COORD begin_point, end_point;
-
-	begin_point = tran_c(body.back());//×ªÎªĞ¡µØÍ¼
-	end_point = tran_c(fpoint);//×ªÎªĞ¡µØÍ¼
-
-	AISnake.GetPath(begin_point, end_point);//Ğ¡µØÍ¼
-
-	
-	if (!AISnake.paths_queue.empty())
-	{
-		head = retran_c(AISnake.paths_queue.front());//×ªÎª´óµØÍ¼
-		AISnake.paths_queue.pop();
-	}
-	else
-	{
-
-		for (int i = 0; i < 4; i++)
-		{
-			int break_num = rand() % 4;
-			temp = body.back();
-			temp.X = temp.X + 2 * direction[i][0];
-			temp.Y = temp.Y + direction[i][1];
-
-			if (alive(temp))  //Â·¾¶²»Í¨²»¿É×ß
-			{
-				continue;
-			}
-			head = temp;
-			if (break_num == i)
-				break;
-		}
-	}
-
-
-
-	//body.push_back(head);
-	//if (eat_food(f))//ÓĞ¹ØÉßµÄÔö³¤
-	//{
-	//	f.rand_food(body);
-	//}
-	//else
-	//{
-	//	gotocoord(body.front());
-	//	body.pop_front();//È¥Î²°Í
-	//	cout << ' ';
-	//}
-	//SetConsoleTextAttribute(handle, 0xB);
-	//gotocoord(body.back());
-	//cout << "¡ö";
-
-	//SetConsoleTextAttribute(handle, 0xB);
-	//dis_score(speed);
-
-}
-COORD Snake::tran_c(COORD pre_c)
-{   
-	COORD _c;
-	_c.X = (pre_c.X - 3) / 2;
-	_c.Y = pre_c.Y - 2;
-	return _c;
-}
-COORD Snake::retran_c(COORD _c)
-{
-	COORD pre_c;
-	pre_c.X = 2 * _c.X + 3;
-	pre_c.Y = _c.Y + 2;
-	return pre_c;
+	cout << "â– ";
 }
