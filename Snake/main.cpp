@@ -1,12 +1,12 @@
 #include"Snake.h"
-#include"BFS.h"
+//#include"BFS.h"
 int main()
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);//»ñÈ¡Êä³ö¾ä±ú
-	SetConsoleTitleA("ÎÒµÄÌ°³ÔÉß");//±êÌâ
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);//è·å–è¾“å‡ºå¥æŸ„
+	SetConsoleTitleA("æˆ‘çš„è´ªåƒè›‡");//æ ‡é¢˜
 	COORD dSiz = { 80, 25 };
-	SetConsoleScreenBufferSize(handle, dSiz);//ÉèÖÃ´°¿Ú»º³åÇø´óĞ¡
-	CONSOLE_CURSOR_INFO ptr = { 1, FALSE };//ÉèÖÃ¹â±ê´óĞ¡£¬Òş²Ø¹â±ê
+	SetConsoleScreenBufferSize(handle, dSiz);//è®¾ç½®çª—å£ç¼“å†²åŒºå¤§å°
+	CONSOLE_CURSOR_INFO ptr = { 1, FALSE };//è®¾ç½®å…‰æ ‡å¤§å°ï¼Œéšè—å…‰æ ‡
 	SetConsoleCursorInfo(handle, &ptr);
 	srand((unsigned int)time(0));
 
@@ -28,13 +28,14 @@ int main()
 			snake.move_snake(snake.body, food);
 		}
 		else {
-			snake.AI_find_path(food);
+			//snake.AI_find_path(food);
+			break;//AIæœªå®Œæˆ
 		}
 		if (snake.alive(snake.body.back()))
 		{
 			if (snake.body.size() == 440)
 			{   
-				cout << "Äã**¾¹È»Í¨¹ØÁË£¿£¡";
+				cout << "ä½ **ç«Ÿç„¶é€šå…³äº†ï¼Ÿï¼";
 			}
 			else
 			{
