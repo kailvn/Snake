@@ -309,8 +309,8 @@ void Snake::init_sanke(int x, int y)
 }
 void Food::rand_food(deque<COORD> & coord)
 {
-	_food.X = 2 * rand() % (20) + 3;
-	_food.Y = rand() % (20) + 2;
+	_food.X = 2 * rand() % (21) + 3;
+	_food.Y = rand() % (21) + 2;
 	unsigned int i;
 	//食物出现在蛇的位置上,重新生成
 	for (i = 0; i < coord.size(); i++)
@@ -318,8 +318,8 @@ void Food::rand_food(deque<COORD> & coord)
 
 		if (coord[i].X == _food.X && coord[i].Y == _food.Y)
 		{
-			_food.X = 2 * rand() % (20) + 3;
-			_food.Y = rand() % (20) + 2;
+			_food.X = 2 * rand() % (21) + 3;
+			_food.Y = rand() % (21) + 2;
 			i = 0;
 		}
 	}
